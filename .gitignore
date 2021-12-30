@@ -1,0 +1,11 @@
+# Editor
+.idea
+.code
+
+# Environment
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
