@@ -3,6 +3,7 @@ package router
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/monitor"
+	"github.com/mmnalaka/auth-keeper/app/controllers"
 )
 
 func handler(c *fiber.Ctx) error {
@@ -18,8 +19,8 @@ func PublicRoutes(app *fiber.App) {
 	v1 := app.Group("/api/v1")
 
 	// Register public routes
-	v1.Get("/login", handler)
-	v1.Get("/register", handler)
+	v1.Post("/login", controllers.Login)
+	v1.Post("/signup", controllers.Signup)
 
 }
 

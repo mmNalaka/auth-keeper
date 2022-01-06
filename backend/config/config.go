@@ -3,8 +3,10 @@ package config
 import "github.com/ilyakaznacheev/cleanenv"
 
 type App struct {
-	Name    string `env-required:"true" env:"APP_NAME"`
-	Version string `env-required:"true" env:"APP_VERSION"`
+	Name          string `env-required:"true" env:"APP_NAME"`
+	Version       string `env-required:"true" env:"APP_VERSION"`
+	DisableLogin  bool   `env:"DISABLE_LOGIN" env-default:"false"`
+	DisableSignup bool   `env:"DISABLE_SIGNUP" env-default:"false"`
 }
 
 type Server struct {
