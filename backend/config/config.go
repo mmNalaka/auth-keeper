@@ -15,8 +15,9 @@ type Server struct {
 }
 
 type Postgres struct {
-	PoolMax int    `env-required:"true" env:"PG_POOL_MAX"`
-	URL     string `env-required:"true" env:"PG_URL"`
+	PoolMax       int    `env-required:"true" env:"PG_POOL_MAX"`
+	URL           string `env-required:"true" env:"PG_URL"`
+	RunMigrations bool   `env:"PG_RUN_MIGRATIONS" env-default:"false"`
 }
 
 type Redis struct {

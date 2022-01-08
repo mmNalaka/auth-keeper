@@ -1,15 +1,16 @@
 package models
 
 import (
-	"github.com/google/uuid"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 type User struct {
 	ID           uuid.UUID `json:"id" gorm:"type:uuid;primary_key"`
 	Email        string    `json:"email" gorm:"unique"`
 	Password     string    `json:"password"`
-	Role         string    `json:"role"`
+	Role         string    `json:"role" gorm:"default:'guest'"`
 	IsSuperAdmin bool      `json:"-" gorm:"default:false"`
 	ProfileImage string    `json:"profile_image"`
 	FirstName    string    `json:"first_name,omitempty"`

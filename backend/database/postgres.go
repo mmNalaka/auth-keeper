@@ -1,11 +1,13 @@
 package database
 
 import (
+	"log"
+
+	"github.com/mmnalaka/auth-keeper/app/models"
 	"github.com/mmnalaka/auth-keeper/config"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
-	"log"
 )
 
 type PostgresInstance struct {
@@ -26,10 +28,12 @@ func ConnectPostgres() {
 	log.Println("Connected to Postgres database!")
 	db.Logger = logger.Default.LogMode(logger.Info)
 
-	//log.Println("Running database migrations")
-	//if err := db.AutoMigrate(&models.User{}, models.Permission{}, models.RefreshToken{}); err != nil {
-	//	log.Fatal("Failed to run database migrations. \n", err)
-	//}
+	if config.Cfg.Postgres.RunMigrations {
+		log.Println("Running database migrations")
+		if err := db.AutoMigrate(&models.User{}, models.Permission{}, models.RefreshToken{}, models.Client{}, models.LoginHistory{}, models.Role{}); err != nil {
+			log.Fatal("Failed to run database migrations. \n", err)
+		}
+	}
 
 	Postgres = &PostgresInstance{
 		Db: db,

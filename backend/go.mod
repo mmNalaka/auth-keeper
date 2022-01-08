@@ -4,7 +4,6 @@ go 1.17
 
 require (
 	github.com/go-playground/validator/v10 v10.9.0
-	github.com/gobuffalo/uuid v2.0.5+incompatible
 	github.com/gofiber/fiber/v2 v2.23.0
 	github.com/google/uuid v1.3.0
 	github.com/ilyakaznacheev/cleanenv v1.2.6
